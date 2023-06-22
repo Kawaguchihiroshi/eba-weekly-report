@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'NotoSansJP-Regular';
+	src: url(~/static/fonts/NotoSansJP/NotoSansJP-Regular.otf);
+}
+@font-face {
+	font-family: 'NotoSansJP-Medium';
+	src: url(~/static/fonts/NotoSansJP/NotoSansJP-Medium.otf);
+}
+@font-face {
+	font-family: 'NotoSansJP-Bold';
+	src: url(~/static/fonts/NotoSansJP/NotoSansJP-Bold.otf);
+}
+
+* {
+  font-family: 'NotoSansJP-Regular', sans-serif;
+  color: #333333;
+	font-size: medium;
+}
