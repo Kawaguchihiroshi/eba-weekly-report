@@ -19,7 +19,7 @@
     "sass": "^1.58.3"
   },
   "dependencies": {
-    "firebase": "^9.17.2",
+    "firebase": "^9.23.0",
     "vue3-datepicker": "^0.3.4"
   }
 }

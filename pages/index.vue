@@ -1,8 +1,8 @@
 <template>
   <div class="main">
-    <!-- <CommonLeftNav /> -->
+    <CommonLeftNav />
     <WeeklyreportWeekform />
-    <!-- <CommonRightNav /> -->
+    <CommonRightNav />
   </div>
 </template>
 
