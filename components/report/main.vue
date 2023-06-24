@@ -46,97 +46,44 @@
 </script>
 
 <template>
-  <section id="weekform" class="weekform">
+  <section id="report" class="report">
     <transition name="fadein">
       <div class="container">
         <div class="head">
-          <WeeklyreportCalendar />
-          <WeeklyreportNews />
-          <WeeklyreportCsvdownlord />
-        </div>
-
-        <form action="#">
-          <div class="buttonArea">
-            <button>週報を保存する</button>
-            <button class="submission">週報を提出する</button>
+          <h1>住所変更</h1>
+          <h2>報告対象</h2>
+          <p>引越し、ご結婚による同棲など、ご本人の住居地が長期間（1ヵ月以上）変更される時、ご報告ください</p>
+          <h2>報告方法</h2>
+          <p>以下、報告テンプレートをご確認の上、右フォームよりご報告ください。</p>
+          <div>
+            ---------------------------------------------<br>
+            ＜宛先＞<br>
+            soumu@aaa.jp<br>
+            ---------------------------------------------<br>
+            ＜件名＞<br>
+            【住所変更】名前（フルネーム）<br>
+            ---------------------------------------------<br>
+            ＜本文＞<br>
+            【名 前】 フルネーム<br>
+            【転居日】 〇年〇月〇日<br>
+            【旧住所】 〒 123-4567 〇〇県〇〇市〇〇<br>
+            【新住所】 〒 123-4567 〇〇県〇〇市〇〇<br>
+            【フリガナ】 〇〇シ〇〇チョウ〇〇<br>
+            ---------------------------------------------<br>
           </div>
-
-          <table>
-            <thead>
-              <tr>
-                <th class="itemname01">日付</th>
-                <th class="itemname02">作業内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(weeklydata, index) in weeklydatas" :key="index">
-                <td class="itemname01">
-                  <div v-if="index == 0"><span class="date">{{ weeklydata.date }}</span>（月）</div>
-                  <div v-else-if="index == 1"><span class="date">{{ weeklydata.date }}</span>（火）</div>
-                  <div v-else-if="index == 2"><span class="date">{{ weeklydata.date }}</span>（水）</div>
-                  <div v-else-if="index == 3"><span class="date">{{ weeklydata.date }}</span>（木）</div>
-                  <div v-else-if="index == 4"><span class="date">{{ weeklydata.date }}</span>（金）</div>
-                  <div v-else-if="index == 5"><span class="date">{{ weeklydata.date }}</span>（土）</div>
-                  <div v-else-if="index == 6"><span class="date">{{ weeklydata.date }}</span>（日）</div>
-                  <div class="workingtime">勤務時間：{{ weeklydata.totaltaime }}</div>
-                  <div class="overworking">残業：{{ weeklydata.overtime }}</div>
-                </td>
-                <td class="itemname02">
-                  <textarea rows="5">{{ weeklydata.workContent }}</textarea>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table>
-            <thead>
-              <tr>
-                <th class="itemname01 stady">直近で学んだこと、覚えたこと</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="itemname02 stady">
-                  <textarea rows="5"></textarea>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table>
-            <thead>
-              <tr>
-                <th class="itemname01 stady">コメント欄<span class="">（あなたのプライベートを書ける範囲で書いてください。その他特記事項など）</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="itemname02 stady">
-                  <textarea rows="5"></textarea>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-
-        <WeeklyreportLeaderform />
-        <WeeklyreportCeoform />
-        <WeeklyreportOtherform />
+        </div>
       </div>
     </transition>
   </section>
 </template>
 
 <style lang="scss" scoped>
-.weekform {
+.report {
   margin-top: 100px;
   .container{
     width: 984px;
     margin: 0 auto;
     .head {
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
     }
     .buttonArea {
       margin-top: 20px;

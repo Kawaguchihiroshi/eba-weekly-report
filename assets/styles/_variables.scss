@@ -1,3 +1,11 @@
+* {
+  font-family: 'NotoSansJP-Regular', sans-serif;
+  color: #333333;
+	font-size: medium;
+}
+
+/* フォント設定 */
+$tab: 768px;
 @font-face {
 	font-family: 'NotoSansJP-Regular';
 	src: url(~/static/fonts/NotoSansJP/NotoSansJP-Regular.otf);
@@ -11,8 +19,25 @@
 	src: url(~/static/fonts/NotoSansJP/NotoSansJP-Bold.otf);
 }
 
-* {
-  font-family: 'NotoSansJP-Regular', sans-serif;
-  color: #333333;
-	font-size: medium;
+
+/* モバイル向けのスタイル */
+$sp: 480px;
+$tab: 768px;
+$lap: 1024px;
+
+@mixin sp {
+ @media screen and (max-width: ($sp)) {
+   @content;
+ }
+}
+@mixin tab {
+ @media screen and (max-width: ($tab)) {
+   @content;
+ }
+}
+
+@mixin lap {
+ @media screen and (max-width: ($lap)) {
+   @content;
+ }
 }
