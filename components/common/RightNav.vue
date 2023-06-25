@@ -1,16 +1,10 @@
 <template>
   <section class="sidebar">
-    <ul class="accordion">
-      <li class="nav">
-        <ul class="inner_nav">
-          <li class="nav">
-            <a href="view/manual_img/awards.pdf" target="_blank">週報システムに関するお問い合わせ</a>
-          </li>
-        </ul>
+    <a href="view/manual_img/awards.pdf" target="_blank">週報システムに関するお問い合わせ</a>
 
-        <span class="nav">
-          制度
-        </span>
+    <details>
+      <summary>制度一覧</summary>
+      <div>
         <ul class="inner_nav">
           <li class="nav">
             <a href="view/manual_img/awards.pdf" target="_blank">表彰（客先・EBA勤続）</a>
@@ -28,11 +22,12 @@
             <a href="http://eba-library.tokyo/index.php/login" target="_blank"> 図書システム</a>
           </li>
         </ul>
-      </li>
-      <li class="nav">
-        <span class="nav">
-          報告・申請
-        </span>
+      </div>
+    </details>
+
+    <details>
+      <summary>報告・申請</summary>
+      <div>
         <ul class="inner_nav">
           <li class="nav">
             <a href="view/manual_img/change_address.pdf" target="_blank">住所変更</a>
@@ -59,14 +54,16 @@
             <a href="view/manual_img/safety_confirmation.pdf" target="_blank">安否確認</a>
           </li>
         </ul>
-      </li>
-    </ul>
+      </div>
+    </details>
+
   </section>
 </template>
 
 <style lang="scss" scoped>
 .sidebar {
   width: 200px;
+  padding: 15px 10px 10px 15px;
   position: fixed;
   top: 100px;
   right: 16px;
