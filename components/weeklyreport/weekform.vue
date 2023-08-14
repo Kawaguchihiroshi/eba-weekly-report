@@ -1,48 +1,69 @@
 <script setup lang="ts">
-  const weeklydatas = [
-    {
-      date: '4/24',
-      totaltaime: '07:30',
-      overtime: '01:30',
-      workContent: '月曜日の内容です。月曜日の内容です。月曜日の内容です。'
-    },
-    {
-      date: '4/25',
-      totaltaime: '07:30',
-      overtime: '01:30',
-      workContent: '火曜日の内容です。月曜日の内容です。月曜日の内容です。'
-    },
-    {
-      date: '4/26',
-      totaltaime: '07:30',
-      overtime: '01:30',
-      workContent: '水曜日の内容です。月曜日の内容です。月曜日の内容です。'
-    },
-    {
-      date: '4/27',
-      totaltaime: '07:30',
-      overtime: '01:30',
-      workContent: '月曜日の内容です。月曜日の内容です。月曜日の内容です。'
-    },
-    {
-      date: '4/28',
-      totaltaime: '07:30',
-      overtime: '01:30',
-      workContent: '月曜日の内容です。月曜日の内容です。月曜日の内容です。'
-    },
-    {
-      date: '4/29',
-      totaltaime: '07:30',
-      overtime: '01:30',
-      workContent: '月曜日の内容です。月曜日の内容です。月曜日の内容です。'
-    },
-    {
-      date: '4/30',
-      totaltaime: '07:30',
-      overtime: '01:30',
-      workContent: '月曜日の内容です。月曜日の内容です。月曜日の内容です。'
+interface NotionPost {
+  // Define the structure of a NotionPost here
+  // For example: title: string, content: string, etc.
+}
+
+const notionPosts = ref<NotionPost[]>([]);
+
+onMounted(async () => {
+  try {
+    const response = await fetch("/api/notion");
+    if (response.ok) {
+      const data = await response.json();
+      notionPosts.value = data.notionPosts;
+    } else {
+      console.error("Failed to fetch data from the server");
     }
-  ];
+  } catch (error) {
+    console.error("An error occurred while fetching data:", error);
+  }
+});
+
+const weeklydatas = [
+  {
+    date: "4/24",
+    totaltaime: "07:30",
+    overtime: "01:30",
+    workContent: "月曜日の内容です。月曜日の内容です。月曜日の内容です。",
+  },
+  {
+    date: "4/25",
+    totaltaime: "07:30",
+    overtime: "01:30",
+    workContent: "火曜日の内容です。月曜日の内容です。月曜日の内容です。",
+  },
+  {
+    date: "4/26",
+    totaltaime: "07:30",
+    overtime: "01:30",
+    workContent: "水曜日の内容です。月曜日の内容です。月曜日の内容です。",
+  },
+  {
+    date: "4/27",
+    totaltaime: "07:30",
+    overtime: "01:30",
+    workContent: "月曜日の内容です。月曜日の内容です。月曜日の内容です。",
+  },
+  {
+    date: "4/28",
+    totaltaime: "07:30",
+    overtime: "01:30",
+    workContent: "月曜日の内容です。月曜日の内容です。月曜日の内容です。",
+  },
+  {
+    date: "4/29",
+    totaltaime: "07:30",
+    overtime: "01:30",
+    workContent: "月曜日の内容です。月曜日の内容です。月曜日の内容です。",
+  },
+  {
+    date: "4/30",
+    totaltaime: "07:30",
+    overtime: "01:30",
+    workContent: "月曜日の内容です。月曜日の内容です。月曜日の内容です。",
+  },
+];
 </script>
 
 <template>
@@ -71,14 +92,37 @@
             <tbody>
               <tr v-for="(weeklydata, index) in weeklydatas" :key="index">
                 <td class="itemname01">
-                  <div v-if="index == 0"><span class="date">{{ weeklydata.date }}</span>（月）</div>
-                  <div v-else-if="index == 1"><span class="date">{{ weeklydata.date }}</span>（火）</div>
-                  <div v-else-if="index == 2"><span class="date">{{ weeklydata.date }}</span>（水）</div>
-                  <div v-else-if="index == 3"><span class="date">{{ weeklydata.date }}</span>（木）</div>
-                  <div v-else-if="index == 4"><span class="date">{{ weeklydata.date }}</span>（金）</div>
-                  <div v-else-if="index == 5"><span class="date">{{ weeklydata.date }}</span>（土）</div>
-                  <div v-else-if="index == 6"><span class="date">{{ weeklydata.date }}</span>（日）</div>
-                  <div class="workingtime">勤務時間：{{ weeklydata.totaltaime }}</div>
+                  <div v-if="index == 0">
+                    <span class="date">{{ weeklydata.date }}</span
+                    >（月）
+                  </div>
+                  <div v-else-if="index == 1">
+                    <span class="date">{{ weeklydata.date }}</span
+                    >（火）
+                  </div>
+                  <div v-else-if="index == 2">
+                    <span class="date">{{ weeklydata.date }}</span
+                    >（水）
+                  </div>
+                  <div v-else-if="index == 3">
+                    <span class="date">{{ weeklydata.date }}</span
+                    >（木）
+                  </div>
+                  <div v-else-if="index == 4">
+                    <span class="date">{{ weeklydata.date }}</span
+                    >（金）
+                  </div>
+                  <div v-else-if="index == 5">
+                    <span class="date">{{ weeklydata.date }}</span
+                    >（土）
+                  </div>
+                  <div v-else-if="index == 6">
+                    <span class="date">{{ weeklydata.date }}</span
+                    >（日）
+                  </div>
+                  <div class="workingtime">
+                    勤務時間：{{ weeklydata.totaltaime }}
+                  </div>
                   <div class="overworking">残業：{{ weeklydata.overtime }}</div>
                 </td>
                 <td class="itemname02">
@@ -106,7 +150,11 @@
           <table>
             <thead>
               <tr>
-                <th class="itemname01 stady">コメント欄<span class="">（あなたのプライベートを書ける範囲で書いてください。その他特記事項など）</span></th>
+                <th class="itemname01 stady">
+                  コメント欄<span class=""
+                    >（あなたのプライベートを書ける範囲で書いてください。その他特記事項など）</span
+                  >
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -130,7 +178,7 @@
 <style lang="scss" scoped>
 .weekform {
   margin-top: 100px;
-  .container{
+  .container {
     width: 984px;
     margin: 0 auto;
     .head {
@@ -151,7 +199,7 @@
       padding: 4px 16px 5px 16px;
       border: 0px;
       border-radius: 4px;
-      background-color: #F2B134;
+      background-color: #f2b134;
       transition: 0.5s ease;
     }
     button:hover {
@@ -170,7 +218,7 @@
           th {
             border: none;
             border-bottom: 3px solid #ffffff;
-            background-color: #74B495;
+            background-color: #74b495;
             color: #ffffff;
             text-align: left;
           }
@@ -202,7 +250,6 @@
       }
       tbody {
         tr {
-
           td {
             border: none;
             border-bottom: 2px solid #ffffff;
@@ -222,7 +269,8 @@
               font-weight: bold;
               letter-spacing: 0.1em;
             }
-            .workingtime, .overworking {
+            .workingtime,
+            .overworking {
               margin-top: 6px;
               padding: 4px 16px 6px 16px;
               border-radius: 30px;

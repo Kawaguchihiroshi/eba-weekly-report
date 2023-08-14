@@ -15,10 +15,12 @@
     "@vue/eslint-config-prettier": "^7.1.0",
     "eslint": "^8.36.0",
     "nuxt": "^3.2.3",
+    "nuxt-gtag": "^0.5.9",
     "prettier": "^2.8.4",
     "sass": "^1.58.3"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.10",
     "firebase": "^9.23.0",
     "vue3-datepicker": "^0.3.4"
   }
