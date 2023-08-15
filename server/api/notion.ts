@@ -1,25 +1,29 @@
-import { Client } from "@notionhq/client"; // このインポートパスは適切に設定してください
+import { Client } from "@notionhq/client";
 
 interface NotionPost {
-  id: string; // もしくは適切な型をここに指定
-  // 他のプロパティも必要に応じて定義
+  uid: string;
+  id: number;
+  title: string;
+  detail: string;
 }
+const runtimeConfig = useRuntimeConfig();
 
 export default async function fetchNotionPosts(): Promise<{
   notionPosts: NotionPost[];
 }> {
-  const runtimeConfig = useRuntimeConfig();
-
   const notion = new Client({
-    auth: runtimeConfig.nationToken,
+    auth: runtimeConfig.public.nationToken,
   });
 
   const response = await notion.databases.query({
-    database_id: runtimeConfig.nationDbId,
+    database_id: runtimeConfig.public.nationDbId,
   });
 
-  const notionPosts: NotionPost[] = response.results.map((row) => ({
-    id: row.id, // もしくは適切なプロパティをここに指定
+  const notionPosts: NotionPost[] = response.results.map((row, index) => ({
+    uid: row.id,
+    id: index,
+    title: row.properties.Title.title[0],
+    detail: row.properties.Detail.rich_text[0],
   }));
 
   return {

@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      nationToken: "secret_ssQG02vuPWMYAyJc2aBdTz9SadTMebU1L33X7rnHx9l",
-      nationDbId: "ece3335706b7414abd41777dae37ec7f",
+      nationToken: process.env.NUXT_NOTION_TOKEN,
+      nationDbId: process.env.NUXT_NOTION_DATABASE_ID,
     },
   },
   modules: ["nuxt-gtag"],

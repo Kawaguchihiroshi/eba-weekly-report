@@ -75,7 +75,7 @@ const weeklydatas = [
           <WeeklyreportNews />
           <WeeklyreportCsvdownlord />
         </div>
-
+        <div>{{ notionPosts }}</div>
         <form action="#">
           <div class="buttonArea">
             <button>週報を保存する</button>
